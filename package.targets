@@ -18,7 +18,7 @@
   </ItemDefinitionGroup>
 
   <!-- dynamic libraries -->
-  <Target Name="openssl-vc141_AfterBuild" AfterTargets="AfterBuild">
+  <Target Name="openssl-win64a_AfterBuild" AfterTargets="AfterBuild">
     <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\libssl-1_1-x64.dll"    DestinationFiles="$(TargetDir)libssl-1_1-x64.dll"    SkipUnchangedFiles="true" />
     <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\libcrypto-1_1-x64.dll" DestinationFiles="$(TargetDir)libcrypto-1_1-x64.dll" SkipUnchangedFiles="true" />
   </Target>
