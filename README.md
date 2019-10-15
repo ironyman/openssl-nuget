@@ -18,12 +18,19 @@ OPENSSLDIR: "C:\Program Files\Common Files\SSL"
 ENGINESDIR: "C:\Program Files\OpenSSL\lib\engines-1_1"
 Seeding source: os-specific
 ```
-# Use in solution
+# Install in solution first time
 Run in VS package manager console
 ```
 install-package openssl-win64a -source d:\openssl-nuget
 ```
+This one doesn't work for some reason
 ```
 cd D:\openssl-nuget\test\openssl-test\
 nuget install openssl-win64a -outputdirectory packages -source d:\openssl-nuget
+```
+This changes .vcproj and packages.config to include the nuget package. It also copies contents of the nuget package to packages directory.
+## After first time install, reinstall nuget after cloning
+In command prompt, solution directory
+```
+nuget restore -source d:\openssl-nuget
 ```
