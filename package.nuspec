@@ -3,26 +3,83 @@
     <metadata minClientVersion="2.5">
         <id>openssl-win64a</id>
         <title>openssl-win64a</title>
-        <version>0.0.1</version>
+        <version>0.0.3</version>
         <authors>The OpenSSL Project</authors>
         <owners>changyl</owners>
         <license type="expression">MIT</license>
         <projectUrl>http://github.com/private</projectUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
         <summary>It's OpenSSL!</summary>
-        <description>Built with Visual Studio 2019 for x64.</description>
+        <description>Built with Visual Studio 2019 for x64 and x86.</description>
         <copyright>None</copyright>
         <tags>native, openssl, C, C++</tags>
         <dependencies>
         </dependencies>
     </metadata>
     <files>
+        <!-- Copy from build tree to nuget package. -->
         <file src="package.targets" target="build\native\openssl-win64a.targets" />
-        <file src="build\include\openssl\*.h" target="build\native\include\openssl\" />
+
+        <!-- Headers should be platform independent?? -->
+        <file src="VC-WIN64A-debug\include\openssl\*.h" target="build\native\include\openssl\" />
         <file src="openssl\include\openssl\*.h" target="build\native\include\openssl\" />
-        <file src="build\libssl.lib" target="build\native\bin\" />
-        <file src="build\libcrypto.lib" target="build\native\bin\" />
-        <file src="build\libssl-1_1-x64.dll" target="build\native\bin\" />
-        <file src="build\libcrypto-1_1-x64.dll" target="build\native\bin\" />
+
+        <!--
+            What's the differences between configurations you ask?
+            The x64 dlls and pdbs have -x64 at the end, before the file ext.
+            Otherwise all the same.
+        -->
+        <file src="VC-WIN64A-debug\libssl.lib" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libssl_static.lib" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libcrypto.lib" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libcrypto_static.lib" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libssl-1_1-x64.dll" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libcrypto-1_1-x64.dll" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\app.pdb" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libcrypto-1_1-x64.pdb" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\libssl-1_1-x64.pdb" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\ossl_static.pdb" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\apps\openssl.exe" target="build\native\bin\VC-WIN64A-debug" />
+        <file src="VC-WIN64A-debug\apps\openssl.pdb" target="build\native\bin\VC-WIN64A-debug" />
+
+        <file src="VC-WIN64A-release\libssl.lib" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libssl_static.lib" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libcrypto.lib" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libcrypto_static.lib" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libssl-1_1-x64.dll" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libcrypto-1_1-x64.dll" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\app.pdb" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libcrypto-1_1-x64.pdb" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\libssl-1_1-x64.pdb" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\ossl_static.pdb" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\apps\openssl.exe" target="build\native\bin\VC-WIN64A-release" />
+        <file src="VC-WIN64A-release\apps\openssl.pdb" target="build\native\bin\VC-WIN64A-release" />
+
+        <file src="VC-WIN32-debug\libssl.lib" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libssl_static.lib" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libcrypto.lib" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libcrypto_static.lib" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libssl-1_1.dll" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libcrypto-1_1.dll" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\app.pdb" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libcrypto-1_1.pdb" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\libssl-1_1.pdb" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\ossl_static.pdb" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\apps\openssl.exe" target="build\native\bin\VC-WIN32-debug" />
+        <file src="VC-WIN32-debug\apps\openssl.pdb" target="build\native\bin\VC-WIN32-debug" />
+
+        <file src="VC-WIN32-release\libssl.lib" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libssl_static.lib" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libcrypto.lib" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libcrypto_static.lib" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libssl-1_1.dll" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libcrypto-1_1.dll" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\app.pdb" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libcrypto-1_1.pdb" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\libssl-1_1.pdb" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\ossl_static.pdb" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\apps\openssl.exe" target="build\native\bin\VC-WIN32-release" />
+        <file src="VC-WIN32-release\apps\openssl.pdb" target="build\native\bin\VC-WIN32-release" />
+
     </files>
 </package>

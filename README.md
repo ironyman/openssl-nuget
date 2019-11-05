@@ -8,7 +8,7 @@ Also install VS2019.
 Run `build.bat`
 
 ```
-D:\openssl-nuget>build\apps\openssl.exe version -a
+D:\openssl-nuget>VC-WIN64A-debug\apps\openssl.exe version -a
 OpenSSL 1.1.1d  10 Sep 2019
 built on: Tue Oct 15 01:58:15 2019 UTC
 platform: VC-WIN64A
