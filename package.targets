@@ -8,16 +8,16 @@
             <AdditionalIncludeDirectories>$(MSBuildThisFileDirectory)include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
         </ClCompile>
         <Link>
-            <AdditionalLibraryDirectories Condition="'$(Configuration)' == 'Debug' And '$(Platform)' == 'x64'">
+            <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
                 $(MSBuildThisFileDirectory)bin\VC-WIN64A-debug\;%(AdditionalLibraryDirectories)
             </AdditionalLibraryDirectories>
-            <AdditionalLibraryDirectories Condition="'$(Configuration)' == 'Release' And '$(Platform)' == 'x64'">
+            <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
                 $(MSBuildThisFileDirectory)bin\VC-WIN64A-release\;%(AdditionalLibraryDirectories)
             </AdditionalLibraryDirectories>
-            <AdditionalLibraryDirectories Condition="'$(Configuration)' == 'Debug' And ('$(Platform)' == 'Win32' Or '$(Platform)' == 'x86')">
+            <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
                 $(MSBuildThisFileDirectory)bin\VC-WIN32-debug\;%(AdditionalLibraryDirectories)
             </AdditionalLibraryDirectories>
-            <AdditionalLibraryDirectories Condition="'$(Configuration)' == 'Release' And ('$(Platform)' == 'Win32' Or '$(Platform)' == 'x86')">
+            <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
                 $(MSBuildThisFileDirectory)bin\VC-WIN32-release\;%(AdditionalLibraryDirectories)
             </AdditionalLibraryDirectories>
         </Link>
@@ -32,7 +32,7 @@
 
     <!-- dynamic libraries -->
     <Target 
-        Condition="'$(Configuration)' == 'Debug' And '$(Platform)' == 'x64'"
+        Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"
         Name="openssl-win64a-VC-WIN64A-debug_AfterBuild"
         AfterTargets="AfterBuild"
     >
@@ -42,7 +42,7 @@
         <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\VC-WIN64A-debug\libcrypto-1_1-x64.pdb" DestinationFiles="$(TargetDir)libcrypto-1_1-x64.pdb" SkipUnchangedFiles="true" />
     </Target>
     <Target 
-        Condition="'$(Configuration)' == 'Release' And '$(Platform)' == 'x64'"
+        Condition="'$(Configuration)|$(Platform)'=='Release|x64'"
         Name="openssl-win64a-VC-WIN64A-release_AfterBuild"
         AfterTargets="AfterBuild"
     >
@@ -52,7 +52,7 @@
         <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\VC-WIN64A-release\libcrypto-1_1-x64.pdb" DestinationFiles="$(TargetDir)libcrypto-1_1-x64.pdb" SkipUnchangedFiles="true" />
     </Target>
     <Target 
-        Condition="'$(Configuration)' == 'Debug' And ('$(Platform)' == 'Win32' Or '$(Platform)' == 'x86')"
+        Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'"
         Name="openssl-win64a-VC-WIN32-debug_AfterBuild"
         AfterTargets="AfterBuild"
     >
@@ -62,7 +62,7 @@
         <Copy SourceFiles="$(MSBuildThisFileDirectory)bin\VC-WIN32-debug\libcrypto-1_1.pdb" DestinationFiles="$(TargetDir)libcrypto-1_1.pdb" SkipUnchangedFiles="true" />
     </Target>
     <Target 
-        Condition="'$(Configuration)' == 'Release' And ('$(Platform)' == 'Win32' Or '$(Platform)' == 'x86')"
+        Condition="'$(Configuration)|$(Platform)'=='Release|Win32'"
         Name="openssl-win64a-VC-WIN32-release_AfterBuild"
         AfterTargets="AfterBuild"
     >

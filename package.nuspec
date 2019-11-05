@@ -3,7 +3,7 @@
     <metadata minClientVersion="2.5">
         <id>openssl-win64a</id>
         <title>openssl-win64a</title>
-        <version>0.0.3</version>
+        <version>0.0.4</version>
         <authors>The OpenSSL Project</authors>
         <owners>changyl</owners>
         <license type="expression">MIT</license>
